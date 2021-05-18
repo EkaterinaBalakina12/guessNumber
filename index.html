@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let randomNum = Math.floor(Math.random() * 10 + 1); //Рандомное число
+        let test = 5; //Количество попыток
+        let flag = false;
+        
+        while (test){
+            if (flag == true){//Досрочный выход если число угадали раньше
+                console.log(test);
+                break;
+            }
+            let numberVar = prompt("Угадайте число", ""); //Введенное число
+            game(numberVar, big, small, equally); //Функция проверки числа
+            test = test - 1;
+            if (test == 0){
+                console.log(test);
+                alert("Увы, попытки закончились! Загаданное число: "+ randomNum);
+            }            
+        }
+
+        function game(numVar, max, min, eq) {
+            if (numVar < randomNum) {//Загаданное число больше введенного
+            max();
+            } else if (numVar > randomNum) {//Загаданное число меньше введенного
+            min();
+            } else if (numVar == randomNum) {//Равно
+            eq();
+            }
+        }
+
+        function big(){
+            alert("Загаданное число больше введенного");
+        }
+
+        function small(){
+            alert("Загаданное число меньше введенного");
+        }
+
+        function equally(){
+            flag = true; 
+            alert("Поздравляю! Число " + randomNum +" отгадано!");
+        }
+    </script>   
+</body>
+</html>
